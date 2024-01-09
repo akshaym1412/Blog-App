@@ -52,14 +52,15 @@ const CreatePost = () => {
           //img upload
           try{
             const imgUpload=await axios.post(URL+"/api/upload",data)
-            // console.log(imgUpload.data)
+            const url=imgUpload.data;
+            post.url=url;
           }
           catch(err){
             console.log(err)
           }
         }
         //post upload
-        // console.log(post)
+        console.log(post)
         try{
           const res=await axios.post(URL+"/api/posts/create",post,{withCredentials:true})
           navigate("/posts/post/"+res.data._id)

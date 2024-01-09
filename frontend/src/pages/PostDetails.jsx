@@ -92,7 +92,7 @@ const PostDetails = () => {
 
   
   return (
-    <div>
+    <div className="flex-row">
         <Navbar/>
         {loader?<div className="h-[80vh] flex justify-center items-center w-full"><Loader/></div>:<div className="px-8 md:px-[200px] mt-8">
         <div className="flex justify-between items-center">
@@ -109,9 +109,10 @@ const PostDetails = () => {
        <p>{new Date(post.updatedAt).toString().slice(16,24)}</p>
        </div>
         </div>
-        <img src={IF+post.photo} className="w-full  mx-auto mt-8" alt=""/>
-         <p className="mx-auto mt-8">{post.desc}</p>
-         <div className="flex items-center mt-8 space-x-4 font-semibold">
+        <div className="w-200 h-100">
+        <img src={post.url} className="w-22 mx-auto mt-8 object-contain h-80 w-100 " alt=""/></div>
+         <p className="mx-auto mt-8 text-2xl">{post.desc}</p>
+         <div className="flex items-center mt-8 space-x-4 font-semibold text-xl">
           <p>Categories:</p>
           <div className="flex justify-center items-center space-x-2">
           {post.categories?.map((c,i)=>(
