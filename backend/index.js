@@ -27,10 +27,24 @@ const connectDB=async()=>{
 
 
 //middlewares
+
 dotenv.config()
 app.use(express.json())
 // app.use("/images",express.static(path.join(__dirname,"/images")))
-app.use(cors({origin:"https://blogapp-nu-seven.vercel.app",credentials:true}))
+app.use(cors());
+app.use(express.static(path.join(__dirname,"./frontend/dist")))
+// app.get("*",function(_,res){
+//     res.sendFile(path.join(__dirname,"./frontend/dist/index.html"),function(err){
+//         res.status(500).send(err)
+//     })
+// })
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+//     res.setHeader('Access-Control-Allow-Credentials', 'true');
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     next();
+//   })
 app.use(cookieParser())
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
